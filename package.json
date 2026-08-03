@@ -1,0 +1,27 @@
+{
+  "name": "sonora-desktop",
+  "version": "1.0.0",
+  "description": "Sonora - reproductor de musica personal, con envio a dispositivos DLNA/audiocast",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:renderer": "cd renderer && npm install && npm run build",
+    "dev": "npm run build:renderer && electron ."
+  },
+  "dependencies": {
+    "node-ssdp": "^4.0.1"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.agoitz.sonora",
+    "productName": "Sonora",
+    "files": ["main.js", "preload.js", "dlna/**/*", "renderer/dist/**/*"],
+    "mac": { "category": "public.app-category.music" },
+    "win": { "target": "nsis" },
+    "linux": { "target": "AppImage" }
+  }
+}
